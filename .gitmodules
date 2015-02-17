@@ -1,0 +1,3 @@
+[submodule "src/cf-postgresql-broker"]
+	path = src/cf-postgresql-broker
+	url = git@github.com:cskksc/cf-postgresql-broker.git
