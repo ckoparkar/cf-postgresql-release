@@ -1,0 +1,5 @@
+check process postgresql_broker
+  with pidfile /var/vcap/sys/run/postgresql_broker/pid
+  start program "/var/vcap/jobs/postgresql_broker/bin/ctl start"
+  stop program "/var/vcap/jobs/postgresql_broker/bin/ctl stop"
+  group vcap

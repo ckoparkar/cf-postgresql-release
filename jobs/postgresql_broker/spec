@@ -1,0 +1,6 @@
+---
+name: postgresql_broker
+templates:
+  ctl.erb: bin/ctl
+
+packages:

@@ -32,3 +32,23 @@ build/
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
+config/dev.yml
+config/private.yml
+releases/*.tgz
+dev_releases
+blobs
+.blobs
+.dev_builds
+.idea
+.final_builds/jobs/**/*.tgz
+.final_builds/packages/**/*.tgz
+*.swp
+*~
+*#
+#*
+.gitreview
+.cache
+src_alt
+/tmp/*
+releases/**/*.tgz
+.DS_Store
