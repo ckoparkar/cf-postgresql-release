@@ -1,0 +1,6 @@
+---
+blobstore:
+  provider: local
+  options:
+    blobstore_path: /home/cskksc/chai/cf
+final_name: postgresql_release

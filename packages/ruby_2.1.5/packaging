@@ -1,0 +1,19 @@
+# abort script on any command that exits with a non zero value
+set -e
+
+tar xzf ruby_2.1.5/ruby-2.1.5.tar.gz
+
+pushd ruby-2.1.5
+   ./configure \
+    --prefix=${BOSH_INSTALL_TARGET}
+
+  make
+  make install
+popd
+
+tar zxvf ruby_2.1.5/rubygems-2.4.6.tgz
+pushd rubygems-2.4.6
+  ${BOSH_INSTALL_TARGET}/bin/ruby setup.rb
+popd
+
+${BOSH_INSTALL_TARGET}/bin/gem install ruby_2.1.5/bundler-1.8.2.gem --no-ri --no-rdoc

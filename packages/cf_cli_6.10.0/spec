@@ -1,0 +1,7 @@
+---
+name: cf_cli_6.10.0
+
+dependencies:
+
+files:
+- cf_cli_6.10.0/cf-linux-amd64.tgz #https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.10.0&source=github-rel

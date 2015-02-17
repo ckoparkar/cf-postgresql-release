@@ -14,9 +14,9 @@ case $1 in
 
     cd /var/vcap/packages/postgresql_broker
 
-    export PATH=/var/vcap/packages/cf_cli/bin:$PATH
+    export PATH=/var/vcap/packages/cf_cli_6.10.0/bin:$PATH
 
-    exec /var/vcap/packages/cf_cli/bin/cf api \
+    exec /var/vcap/packages/cf_cli_6.10.0/bin/cf --help \
     >>  $LOG_DIR/postgresql_broker.stdout.log \
     2>> $LOG_DIR/postgresql.stderr.log
     ;;

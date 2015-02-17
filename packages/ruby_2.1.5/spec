@@ -1,0 +1,9 @@
+---
+name: ruby_2.1.5
+
+dependencies:
+
+files:
+- ruby_2.1.5/ruby-2.1.5.tar.gz #http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.5.tar.gz
+- ruby_2.1.5/rubygems-2.4.6.tgz #http://production.cf.rubygems.org/rubygems/rubygems-2.4.6.tgz
+- ruby_2.1.5/bundler-1.8.2.gem #https://rubygems.org/downloads/bundler-1.8.2.gem

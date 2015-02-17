@@ -4,3 +4,5 @@ templates:
   ctl.erb: bin/ctl
 
 packages:
+- ruby_2.1.5
+- cf_cli_6.10.0
