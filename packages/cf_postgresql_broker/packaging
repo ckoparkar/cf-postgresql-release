@@ -1,2 +1,4 @@
 # abort script on any command that exits with a non zero value
 set -e
+
+cp -a cf_postgresql_broker/* ${BOSH_INSTALL_TARGET}
