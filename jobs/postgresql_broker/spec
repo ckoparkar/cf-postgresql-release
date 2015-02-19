@@ -6,3 +6,12 @@ templates:
 packages:
 - ruby_2.1.5
 - cf_cli_6.10.0
+- cf_postgresql_broker
+
+properties:
+  cf.username:
+    description: CF username
+    default: admin
+  cf.password:
+    description: CF password
+    default: admin

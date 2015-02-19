@@ -1,0 +1,8 @@
+---
+name: cf_postgresql_broker
+
+dependencies:
+- ruby_2.1.5
+
+files:
+- cf_postgresql_broker/**/*
