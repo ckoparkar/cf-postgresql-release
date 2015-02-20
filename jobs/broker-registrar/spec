@@ -1,0 +1,28 @@
+---
+name: broker-registrar
+templates:
+  run.erb: bin/run
+  postgres.sh.erb: config/postgres.sh
+
+packages:
+- ruby_2.1.5
+- cf_cli_6.10.0
+- cf_postgresql_broker
+
+properties:
+  cf.username:
+    description: CF username
+    default: admin
+  cf.password:
+    description: CF password
+    default: admin
+  cf.api:
+    default: api.sys.example.com
+  postgresql.host:
+    default: localhost
+  postgresql.username:
+    default: admin
+  postgresql.password:
+    default: admin
+  postgresql.port:
+    default: 5432

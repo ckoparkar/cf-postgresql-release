@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+set -u
+
+source config/postgres.sh
+export PATH=$PATH:/var/vcap/packages/cf_cli_6.10.0/bin
+
+cd /var/vcap/packages/cf_postgresql_broker
+
+echo "cf api $CF_API" 
+echo "cf auth $CF_USERNAME $CF_PASSWORD"
