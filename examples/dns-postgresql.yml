@@ -41,7 +41,7 @@ networks:
 resource_pools:
   - name: common
     network: default
-    size: 2
+    size: 1
     stemcell:
       name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
       version: latest
@@ -51,15 +51,15 @@ resource_pools:
       cpu: 2
     env:
       bosh:
-        password: admin
+        password: $6$0uEqWh4hoJqX/Zvo$94spfl1rrfGxCr88x4PfHplzb.elPUVO3vxZua83tAB1B2QJClDeA5riD9uQPM.qtL2rc.n/dhVCcvdGhZSeM/
 
 jobs:
   - name: broker_registrar_instance
     release: postgresql_release
     template: broker-registrar
     instances: 1
+    lifecycle: errand
     resource_pool: common
-    persistent_disk: 10000
     networks:
       - name: default
         default: [dns, gateway]

@@ -3,10 +3,25 @@
 set -e
 set -u
 
-source config/postgres.sh
+POSTGRES_HOST=<%= properties.postgresql.host  %>
+POSTGRES_USERNAME=<%= properties.postgresql.username %>
+POSTGRES_PASSWORD=<%= properties.postgresql.password %>
+POSTGRES_PORT=<%= properties.postgresql.port %>
+
+CF_USERNAME=<%= properties.cf.username %>
+CF_PASSWORD=<%= properties.cf.password %>
+CF_API=<%= properties.cf.api %>
+
 export PATH=$PATH:/var/vcap/packages/cf_cli_6.10.0/bin
 
 cd /var/vcap/packages/cf_postgresql_broker
 
-echo "cf api $CF_API" 
-echo "cf auth $CF_USERNAME $CF_PASSWORD"
+cf api $CF_API
+cf auth $CF_USERNAME $CF_PASSWORD
+cf create-org system
+cf target -o system
+cf create-space postgresql-broker
+cf target -s postgresql-broker
+cf push postgresql-broker-app
+
+exit 0
