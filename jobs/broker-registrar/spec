@@ -2,7 +2,6 @@
 name: broker-registrar
 templates:
   run.erb: bin/run
-  postgres.sh.erb: config/postgres.sh
 
 packages:
 - ruby_2.1.5

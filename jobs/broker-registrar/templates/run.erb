@@ -3,10 +3,10 @@
 set -e
 set -u
 
-POSTGRES_HOST=<%= properties.postgresql.host  %>
-POSTGRES_USERNAME=<%= properties.postgresql.username %>
-POSTGRES_PASSWORD=<%= properties.postgresql.password %>
-POSTGRES_PORT=<%= properties.postgresql.port %>
+POSTGRESQL_HOST=<%= properties.postgresql.host  %>
+POSTGRESQL_USERNAME=<%= properties.postgresql.username %>
+POSTGRESQL_PASSWORD=<%= properties.postgresql.password %>
+POSTGRESQL_PORT=<%= properties.postgresql.port %>
 
 CF_USERNAME=<%= properties.cf.username %>
 CF_PASSWORD=<%= properties.cf.password %>
@@ -23,5 +23,12 @@ cf target -o system
 cf create-space postgresql-broker
 cf target -s postgresql-broker
 cf push postgresql-broker-app
+
+cf set-env postgresql-broker-app POSTGRESQL_HOST $POSTGRESQL_HOST
+cf set-env postgresql-broker-app POSTGRESQL_USERNAME $POSTGRESQL_USERNAME
+cf set-env postgresql-broker-app POSTGRESQL_PASSWORD $POSTGRESQL_PASSWORD
+cf set-env postgresql-broker-app POSTGRESQL_PORT $POSTGRESQL_PORT
+
+cf restage postgresql-broker-app
 
 exit 0
