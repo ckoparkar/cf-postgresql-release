@@ -1,0 +1,6 @@
+---
+name: postgresql93
+
+files:
+- postgresql93/postgresql-9.3.0.tar.gz
+- postgresql93/pgextwlist/**/*

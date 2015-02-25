@@ -1,0 +1,21 @@
+set -e
+
+echo "Extracting PostgreSQL 9.3.0 archive ..."
+
+tar zxvf postgresql93/postgresql-9.3.0.tar.gz
+cd postgresql-9.3.0
+
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make world
+make install-world
+
+cd ..
+
+export PATH=$PATH:${BOSH_INSTALL_TARGET}/bin # for pg_config
+cd postgresql93/pgextwlist
+export PREFIX=${BOSH_INSTALL_TARGET}
+make --debug=v
+make install --debug=v
+
+mkdir -p ${BOSH_INSTALL_TARGET}/lib/plugins
+mv pgextwlist.so ${BOSH_INSTALL_TARGET}/lib/plugins

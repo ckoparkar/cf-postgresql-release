@@ -1,0 +1,9 @@
+---
+name: postgresql_server
+
+templates:
+  a.erb: bin/a
+
+packages:
+- common
+- postgresql93
