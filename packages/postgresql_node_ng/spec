@@ -9,4 +9,4 @@ dependencies:
 files:
 - pkg_utils/*
 - common/services/utils.sh
-- postgresql/**/*
+- postgresql_service_installer/**/*

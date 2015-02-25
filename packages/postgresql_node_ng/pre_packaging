@@ -1,4 +1,4 @@
 set -e
 
 cd ${BUILD_DIR}
-pkg_utils/vendor.sh postgresql
+pkg_utils/vendor.sh postgresql_service_installer
