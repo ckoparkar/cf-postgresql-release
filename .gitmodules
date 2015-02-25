@@ -1,3 +1,6 @@
 [submodule "src/cf-postgresql-broker"]
 	path = src/cf_postgresql_broker
 	url = https://github.com/cskksc/cf-postgresql-broker.git
+[submodule "src/postgresql93/pgextwlist"]
+	path = src/postgresql93/pgextwlist
+	url = https://github.com/dimitri/pgextwlist.git
