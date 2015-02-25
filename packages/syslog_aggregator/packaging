@@ -1,0 +1,3 @@
+set -e
+
+cp syslog_aggregator/setup_syslog_forwarder.sh $BOSH_INSTALL_TARGET/setup_syslog_forwarder.sh

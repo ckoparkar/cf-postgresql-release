@@ -10,3 +10,4 @@ packages:
 - ruby_2.1.5
 - postgresql_node_ng
 - sqlite
+- syslog_aggregator
