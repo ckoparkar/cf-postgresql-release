@@ -7,3 +7,6 @@ templates:
 packages:
 - common
 - postgresql93
+- ruby_2.1.5
+- postgresql_node_ng
+- sqlite

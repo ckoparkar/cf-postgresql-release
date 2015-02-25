@@ -1,0 +1,15 @@
+# abort script on any command that exits with a non zero value
+set -e
+
+set -e
+
+cp -a * ${BOSH_INSTALL_TARGET}
+rm ${BOSH_INSTALL_TARGET}/packaging
+
+(
+  cd ${BOSH_INSTALL_TARGET}/postgresql
+  /var/vcap/packages/ruby_2.1.5/bin/bundle config build.do_sqlite3 --with-sqlite3-dir=/var/vcap/packages/sqlite
+  /var/vcap/packages/ruby_2.1.5/bin/bundle config build.pg --with-pg-dir=/var/vcap/packages/postgresql93
+  /var/vcap/packages/ruby_2.1.5/bin/bundle install --local --deployment
+
+)
