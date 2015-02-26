@@ -1,8 +1,8 @@
 set -e
-tar xzvf sqlite/sqlite-autoconf-3080802.tar.gz
+tar xzvf sqlite/sqlite-autoconf-3080803.tar.gz
 (
-  cd sqlite-autoconf-3080802
+  cd sqlite-autoconf-3080803
   ./configure --prefix=$BOSH_INSTALL_TARGET
   make
   make install
-) 
+)
