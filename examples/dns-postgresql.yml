@@ -1,6 +1,6 @@
 ---
 name: csk_postgresql
-director_uuid: bba8ef69-7ea7-4b16-882b-418e0ee41d24 
+director_uuid: bba8ef69-7ea7-4b16-882b-418e0ee41d24
 
 releases:
   - name: postgresql_release
@@ -74,4 +74,17 @@ properties:
     password: admin
     host: 192.168.109.165
     port: 5435
-    
+    configuration:
+      capacity: 125
+      max_clients: 10
+      quota_files: 4
+      quota_data_size: 240
+      enable_journaling: true
+      backup:
+        enable: false
+  nats:
+    address: 192.168.109.15
+    port: 4222
+    user: nats
+    password: password
+    authorization_timeout: 5
