@@ -2,7 +2,8 @@
 name: postgresql_server
 
 templates:
-  a.erb: bin/a
+  postgresql_ctl.erb: bin/postgresql_ctl
+  postgresql93.conf.erb: config/postgresql93.conf
 
 packages:
 - common
@@ -11,3 +12,13 @@ packages:
 - postgresql_node_ng
 - sqlite
 - syslog_aggregator
+
+properties:
+  postgresql.host:
+    default: localhost
+  postgresql.username:
+    default: admin
+  postgresql.password:
+    default: admin
+  postgresql.port:
+    default: 5432
