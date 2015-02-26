@@ -1,5 +1,5 @@
 check process postgresql93
   with pidfile /var/vcap/sys/run/postgresql/postgresql93.pid
-  start program "/var/vcap/jobs/postgresql_node_ng/bin/postgresql_ctl start"
-  stop program "/var/vcap/jobs/postgresql_node_ng/bin/postgresql_ctl stop"
+  start program "/var/vcap/jobs/postgresql_server/bin/postgresql_ctl start"
+  stop program "/var/vcap/jobs/postgresql_server/bin/postgresql_ctl stop"
   group vcap
