@@ -2,10 +2,12 @@
 name: postgresql_server
 
 templates:
-  postgresql_ctl.erb: bin/postgresql_ctl
   logrotate.conf.erb: config/logrotate.conf
   postgresql93.conf.erb: config/postgresql93.conf
+  postgresql_ctl.erb: bin/postgresql_ctl
   postgresql_logrotate.cron.erb: config/postgresql_logrotate.cron
+  postgresql_node_ctl.erb: bin/postgresql_node_ctl
+  postgresql_node.yml.erb: config/postgresql_node.yml
   pre_service_start.sh.erb: bin/pre_service_start.sh
   post_service_start.sh.erb: bin/post_service_start.sh
 
@@ -26,3 +28,23 @@ properties:
     default: admin
   postgresql.port:
     default: 5432
+  postgresql.configuration.capacity:
+    default: 125
+  postgresql.configuration.max_clients:
+    default: 10
+  postgresql.configuration.quota_files:
+    default: 4
+  postgresql.configuration.quota_data_size:
+    default: 240
+  postgresql.configuration.enable_journaling:
+    default: true
+  postgresql.configuration.backup.enable:
+    default: false
+  nats.user:
+    default: nats
+  nats.password:
+    default: password
+  nats.port:
+    default: 4222
+  nats.address:
+    default: localhost

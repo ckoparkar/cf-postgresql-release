@@ -1,0 +1,47 @@
+---
+capacity: 200
+plan: default
+local_db: sqlite3:/var/vcap/store/postgresql_node.db
+
+base_dir: /var/vcap/store/postgresql
+<% nats_props = "nats://#{properties.nats.user}:#{properties.nats.password}@#{properties.nats.address}:#{properties.nats.port}" %>
+mbus: <%= nats_props %>
+
+index: <%= spec.index %>
+logging:
+  level: debug
+  file: /var/vcap/sys/log/postgresql_node/postgresql_node.log
+
+pid: /var/vcap/sys/run/postgresql_node/postgresql_node.pid
+node_id: "postgresql_node_default_0"
+supported_versions: ['9.3']
+default_version: '9.3'
+
+max_db_size: 128
+max_long_query: 3
+max_long_tx: 0
+max_db_conns: 20
+postgresql:
+   '9.3':
+    host: 127.0.0.1
+    user: <%= properties.postgresql.username %>
+    pass: <%= properties.postgresql.password %>
+    port: <%= properties.postgresql.port %>
+    database: postgres
+    dump_bin: <%= "/var/vcap/packages/postgresql93/bin/pg_dump" %>
+    restore_bin: <%= "/var/vcap/packages/postgresql93/bin/pg_restore" %>
+
+migration_nfs: /var/vcap/services_migration
+z_interval: 30
+max_nats_payload: 1048576
+fqdn_hosts: false
+op_time_limit: 6
+
+m_interval: 10
+
+db_connect_timeout: 3
+db_query_timeout: 10
+db_use_async_query: "true"
+warden_socket_path: "/tmp/warden.sock"
+enable_xlog_enforcer: "true"
+xlog_enforce_tolerance: 5
