@@ -4,6 +4,8 @@ name: postgresql_server
 templates:
   postgresql_ctl.erb: bin/postgresql_ctl
   postgresql93.conf.erb: config/postgresql93.conf
+  pre_service_start.sh.erb: bin/pre_service_start.sh
+  post_service_start.sh.erb: bin/post_service_start.sh
 
 packages:
 - common
