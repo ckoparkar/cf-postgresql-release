@@ -32,11 +32,11 @@ networks:
     - 8.8.8.8
     static:
     - 192.168.109.171
-    - 191.168.109.172
-    - 191.168.109.173
+    - 192.168.109.172
+    - 192.168.109.173
     reserved:
     - 192.168.109.2-192.168.109.170
-    - 192.168.109.250-192.168.109.254
+    - 192.168.109.185-192.168.109.254
     cloud_properties:
       name: VCHS_DEV_NETWORK
 
@@ -57,7 +57,7 @@ resource_pools:
 
 jobs:
   - name: broker_registrar_instance
-    release: postgresql_release
+    release: postgresql-release
     template: broker-registrar
     instances: 1
     lifecycle: errand
@@ -67,7 +67,7 @@ jobs:
         default: [dns, gateway]
 
   - name: broker_deregistrar_instance
-    release: postgresql_release
+    release: postgresql-release
     template: broker-deregistrar
     instances: 1
     lifecycle: errand
@@ -77,14 +77,14 @@ jobs:
         default: [dns, gateway]
 
   - name: postgresql_server_instance
-    release: postgresql_release
+    release: postgresql-release
     template: postgresql_server
     instances: 1
     resource_pool: common
     networks:
       - name: default
         default: [dns, gateway]
-        static_ips: [192.168.109.181]
+        static_ips: [192.168.109.171]
 
 properties:
   cf:
@@ -97,7 +97,7 @@ properties:
       password: admin
     username: vcap
     password: admin
-    host: 192.168.109.165
+    host: 192.168.109.171
     port: 5435
     configuration:
       capacity: 125
