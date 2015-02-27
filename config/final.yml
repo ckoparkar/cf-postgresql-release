@@ -1,6 +1,6 @@
 ---
+final_name: postgresql-release
 blobstore:
-  provider: local
+  provider: s3
   options:
-    blobstore_path: /home/cskksc/chai/cf
-final_name: postgresql_release
+    bucket_name: csk-postgresql-blobs

@@ -1,1 +1,25 @@
---- {}
+---
+postgresql93/postgresql-9.3.0.tar.gz:
+  object_id: 67d1a5fd-63b7-405b-8237-f4a06ac40be1
+  sha: 9b9bf584835f2858b58b2fbc49bfc30f4fb52609
+  size: 22140691
+sqlite/sqlite-autoconf-3080803.tar.gz:
+  object_id: 2a0dcdd8-2272-4dbf-88ac-0128a0ef145b
+  sha: 2fe3f6226a2a08a2e814b97cd53e36bb3c597112
+  size: 2021112
+cf_cli_6.10.0/cf-linux-amd64.tgz:
+  object_id: 6723db48-8d0c-43ec-a9a6-d6e64c6b0499
+  sha: f845800310e4b702a39a2f1191e3d71862630103
+  size: 4803309
+ruby_2.1.5/bundler-1.8.2.gem:
+  object_id: 629aa412-6a7f-4b61-be96-5892ce4e7ef1
+  sha: e9b810268eea94ac5e825b5ae8a2d5fd19fb5905
+  size: 235008
+ruby_2.1.5/ruby-2.1.5.tar.gz:
+  object_id: 7c104316-1b21-4801-90fb-0f1455823655
+  sha: 9c0a238bd7839a4b51871641945a3da90997b8c2
+  size: 15127433
+ruby_2.1.5/rubygems-2.4.6.tgz:
+  object_id: 688feda6-055c-43d4-a558-69b74608a6bd
+  sha: bf59306c0f6c37551875e70ce8ccfb1cbc60c28b
+  size: 447588
