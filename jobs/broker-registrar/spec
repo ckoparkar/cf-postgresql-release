@@ -15,8 +15,8 @@ properties:
   cf.password:
     description: CF password
     default: admin
-  cf.api:
-    default: api.sys.example.com
+  cf.domain:
+    default: example.com
   postgresql.host:
     default: localhost
   postgresql.username:
@@ -25,3 +25,7 @@ properties:
     default: admin
   postgresql.port:
     default: 5432
+  postgresql.basic_auth.username:
+    default: admin
+  postgresql.basic_auth.password:
+    default: admin

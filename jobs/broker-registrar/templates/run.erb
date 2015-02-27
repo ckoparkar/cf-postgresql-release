@@ -8,10 +8,13 @@ POSTGRESQL_USERNAME=<%= properties.postgresql.username %>
 POSTGRESQL_PASSWORD=<%= properties.postgresql.password %>
 POSTGRESQL_PORT=<%= properties.postgresql.port %>
 
+BASIC_AUTH_USERNAME=<%= properties.postgresql.basic_auth.username %>
+BASIC_AUTH_PASSWORD=<%= properties.postgresql.basic_auth.password %>
+
 CF_USERNAME=<%= properties.cf.username %>
 CF_PASSWORD=<%= properties.cf.password %>
-CF_API=<%= properties.cf.api %>
-
+CF_DOMAIN=<%= properties.cf.domain %>
+CF_API="https://api.sys.$CF_DOMAIN"
 export PATH=$PATH:/var/vcap/packages/cf_cli_6.10.0/bin
 
 cd /var/vcap/packages/cf_postgresql_broker
@@ -30,5 +33,10 @@ cf set-env postgresql-broker-app POSTGRESQL_PASSWORD $POSTGRESQL_PASSWORD
 cf set-env postgresql-broker-app POSTGRESQL_PORT $POSTGRESQL_PORT
 
 cf restage postgresql-broker-app
+
+APP_URL="http://postgresql-broker-app.apps.$CF_DOMAIN"
+
+cf create-service-broker postgresql-broker $BASIC_AUTH_USERNAME $BASIC_AUTH_PASSWORD $APP_URL
+cf enable-service-access postgresql-db
 
 exit 0

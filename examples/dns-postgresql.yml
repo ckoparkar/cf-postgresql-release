@@ -32,6 +32,7 @@ networks:
     - 8.8.8.8
     static:
     - 192.168.109.171
+    - 191.168.109.172
     reserved:
     - 192.168.109.2-192.168.109.170
     - 192.168.109.250-192.168.109.254
@@ -41,7 +42,7 @@ networks:
 resource_pools:
   - name: common
     network: default
-    size: 1
+    size: 2
     stemcell:
       name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
       version: latest
@@ -64,12 +65,25 @@ jobs:
       - name: default
         default: [dns, gateway]
 
+  - name: postgresql_server_instance
+    release: postgresql_release
+    template: postgresql_server
+    instances: 1
+    resource_pool: common
+    networks:
+      - name: default
+        default: [dns, gateway]
+        static_ips: [192.168.109.181]
+
 properties:
   cf:
     username: admin
     password: admin
-    api: https://api.sys.example.com
+    domain: example.com
   postgresql:
+    basic_auth:
+      username: admin
+      password: admin
     username: vcap
     password: admin
     host: 192.168.109.165
