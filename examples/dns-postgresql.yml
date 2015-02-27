@@ -1,9 +1,9 @@
 ---
-name: csk_postgresql
+name: csk-postgresql-server
 director_uuid: bba8ef69-7ea7-4b16-882b-418e0ee41d24
 
 releases:
-  - name: postgresql_release
+  - name: postgresql-release
     version: latest
 
 compilation:
