@@ -1,0 +1,15 @@
+---
+name: broker-deregistrar
+templates:
+  run.erb: bin/run
+
+packages:
+- cf_cli_6.10.0
+
+properties:
+  cf.username:
+    description: CF username
+    default: admin
+  cf.password:
+    description: CF password
+    default: admin

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+set -u
+
+CF_USERNAME=<%= properties.cf.username %>
+CF_PASSWORD=<%= properties.cf.password %>
+export PATH=$PATH:/var/vcap/packages/cf_cli_6.10.0/bin
+
+cf api $CF_API
+cf auth $CF_USERNAME $CF_PASSWORD
+cf delete-service-broker postgresql-broker -f
+
+exit 0
