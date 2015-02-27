@@ -1,0 +1,63 @@
+---
+packages:
+- name: common
+  version: 1
+  sha1: 20f9dc518c9fd9c9e362ec5cad14827322679168
+  fingerprint: 47eac3c416f87eb0a648b3dfe45632c654d6e67f
+  dependencies: []
+- name: postgresql_node_ng
+  version: 1
+  sha1: bbfc3d343503729d7a2fb8ff66086857a24b2634
+  fingerprint: eca8bbe6efd62e892520177b870122b33b279276
+  dependencies:
+  - postgresql93
+  - sqlite
+  - ruby_2.1.5
+- name: cf_postgresql_broker
+  version: 1
+  sha1: 8a6227be8570ab77ba1ee9625dc7ecfb7562e5a5
+  fingerprint: 2fc90f7ae0ec1ffca9c6e7511c16fbe508a9cfe3
+  dependencies:
+  - ruby_2.1.5
+- name: postgresql93
+  version: 1
+  sha1: f5d75b529866761dd2e9ca1a65663cd1061cc2a6
+  fingerprint: f73129dd2dbbeda38ae5f35c75c4bbd9a452f278
+  dependencies: []
+- name: syslog_aggregator
+  version: 1
+  sha1: 9a57405093ce2daa2d142299c05cc21265aab27a
+  fingerprint: eb680a4affb0244b5ed1200c666b4c13103b8f45
+  dependencies: []
+- name: sqlite
+  version: 1
+  sha1: ecc0b669c22c19a59ea494aaae245dbd5445b95f
+  fingerprint: 86ce568ddc916d905dd4aef0235b12cd748c52b3
+  dependencies: []
+- name: cf_cli_6.10.0
+  version: 1
+  sha1: fcc73aeefaa6ea9c345aef0bc2e15b2dc282abfb
+  fingerprint: bf9f948f2e5a8783d46927a91ffc6583c127e9ca
+  dependencies: []
+- name: ruby_2.1.5
+  version: 1
+  sha1: 09a59be2c9c94ce6d57f93601e3dff322ccea787
+  fingerprint: b86b902b96c8f92eb56bceeb5c597a3b379eb6b6
+  dependencies: []
+jobs:
+- name: broker-deregistrar
+  version: 1
+  fingerprint: fc737a28eb148cc5d532c542177b3270844e915a
+  sha1: ec6a70237b99f4beb87d338a523c1bc2be8635da
+- name: postgresql_server
+  version: 1
+  fingerprint: 8c8634aae9282764e762bc6eabb5f2bd425544f9
+  sha1: a4fe477ff441366ca3e2e7aa78a06b2e2d682756
+- name: broker-registrar
+  version: 1
+  fingerprint: e729ef4bcabc097c16c1e3e8fd7a0ed917744970
+  sha1: 9424f52b9e731f81843ed90ab3563a48af452b85
+commit_hash: f92774da
+uncommitted_changes: true
+name: postgresql-release
+version: 1
