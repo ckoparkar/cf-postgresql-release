@@ -1,0 +1,73 @@
+---
+packages:
+- name: common
+  version: 8ecced6383310492b543d2a5a3041410c7b33622
+  sha1: 5a119468b371013e88a64edf99ea4c6e202d5c5f
+  fingerprint: 8ecced6383310492b543d2a5a3041410c7b33622
+  dependencies: []
+- name: cf_postgresql_broker
+  version: 9990c6fc3e5a5782afb5b10cef2080d1504284a9
+  sha1: 4c9fb5fcd7e609542255b4be447f97932e6c5a46
+  fingerprint: 9990c6fc3e5a5782afb5b10cef2080d1504284a9
+  dependencies:
+  - ruby_2.1.5
+- name: postgresql_smoketest
+  version: 60cc4db5197390bf2c8662ebd3076fabe2f75515
+  sha1: 86d713e43f5fbd5e80f1afd3718a18299ed018a8
+  fingerprint: 60cc4db5197390bf2c8662ebd3076fabe2f75515
+  dependencies:
+  - ruby_2.1.5
+- name: syslog_aggregator
+  version: 6d3ce1e7f0eedfdc58598acc65ccb1bcfadf089f
+  sha1: 8ce849389eb340956b78318407f91b49c8b3eea8
+  fingerprint: 6d3ce1e7f0eedfdc58598acc65ccb1bcfadf089f
+  dependencies: []
+- name: sqlite
+  version: 76944d8f9869fb2a1b4b503ede0de16bb058295d
+  sha1: 67246d5769d3a2bd3abe1c1b2958cdc84e860ac7
+  fingerprint: 76944d8f9869fb2a1b4b503ede0de16bb058295d
+  dependencies: []
+- name: postgresql_node_ng
+  version: dfa607020f029f1142b4e57b5b5a985b9006c217
+  sha1: 20eeae68b9c12ca3e0dcd916419004d60899d314
+  fingerprint: dfa607020f029f1142b4e57b5b5a985b9006c217
+  dependencies:
+  - postgresql93
+  - sqlite
+  - ruby_2.1.5
+- name: cf_cli_6.10.0
+  version: e8f5e45e1781402170dd50a2f56fd3adbc1c073c
+  sha1: cae45cf35287051720cc8976641b16a998b375b2
+  fingerprint: e8f5e45e1781402170dd50a2f56fd3adbc1c073c
+  dependencies: []
+- name: ruby_2.1.5
+  version: eda40363b04b06b0efb42860520524c804e0ba05
+  sha1: bab67e2043a789b86f622c4dfaa037ef48880254
+  fingerprint: eda40363b04b06b0efb42860520524c804e0ba05
+  dependencies: []
+- name: postgresql93
+  version: d8eafb7386b034deabfefd917c54c00535832a91
+  sha1: c5e4da959c43d313efb0af5d774ebae12aa9feec
+  fingerprint: d8eafb7386b034deabfefd917c54c00535832a91
+  dependencies: []
+jobs:
+- name: postgresql_server
+  version: 2df736527e48d2139ba00699ed95f85383d64d35
+  fingerprint: 2df736527e48d2139ba00699ed95f85383d64d35
+  sha1: 66fdec15a9696d413da4e46978d5eceb7325d8e7
+- name: broker-deregistrar
+  version: d685c279010180aa580519f9c15556427c37dcd6
+  fingerprint: d685c279010180aa580519f9c15556427c37dcd6
+  sha1: bd4ae499aeb6848f370c8f72ee271fbc55ea5527
+- name: smoketest
+  version: 87e42714bdfbf918ff125d3f5b106fb9bdbddd80
+  fingerprint: 87e42714bdfbf918ff125d3f5b106fb9bdbddd80
+  sha1: 859135405fa9d73819f7b45516bdce447ef5ab4f
+- name: broker-registrar
+  version: 6a2f726457ef6d4e0500e70656e0d548c97d196a
+  fingerprint: 6a2f726457ef6d4e0500e70656e0d548c97d196a
+  sha1: 9e6275a095ba844b2c53821e0a98ab235e724818
+commit_hash: 131c3290
+uncommitted_changes: true
+name: postgresql-release
+version: '1.1'
