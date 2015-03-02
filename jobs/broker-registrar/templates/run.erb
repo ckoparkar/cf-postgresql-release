@@ -15,6 +15,9 @@ CF_USERNAME=<%= properties.cf.username %>
 CF_PASSWORD=<%= properties.cf.password %>
 CF_DOMAIN=<%= properties.cf.domain %>
 CF_API="https://api.sys.$CF_DOMAIN"
+
+r=$RANDOM
+APP_NAME="postgresql-broker-app-$r"
 export PATH=$PATH:/var/vcap/packages/cf_cli_6.10.0/bin
 
 cd /var/vcap/packages/cf_postgresql_broker
@@ -25,16 +28,16 @@ cf create-org system
 cf target -o system
 cf create-space postgresql-broker
 cf target -s postgresql-broker
-cf push postgresql-broker-app
+cf push $APP_NAME
 
-cf set-env postgresql-broker-app POSTGRESQL_HOST $POSTGRESQL_HOST
-cf set-env postgresql-broker-app POSTGRESQL_USERNAME $POSTGRESQL_USERNAME
-cf set-env postgresql-broker-app POSTGRESQL_PASSWORD $POSTGRESQL_PASSWORD
-cf set-env postgresql-broker-app POSTGRESQL_PORT $POSTGRESQL_PORT
+cf set-env $APP_NAME POSTGRESQL_HOST $POSTGRESQL_HOST
+cf set-env $APP_NAME POSTGRESQL_USERNAME $POSTGRESQL_USERNAME
+cf set-env $APP_NAME POSTGRESQL_PASSWORD $POSTGRESQL_PASSWORD
+cf set-env $APP_NAME POSTGRESQL_PORT $POSTGRESQL_PORT
 
-cf restage postgresql-broker-app
+cf restage $APP_NAME
 
-APP_URL="http://postgresql-broker-app.apps.$CF_DOMAIN"
+APP_URL="http://$APP_NAME.apps.$CF_DOMAIN"
 
 cf create-service-broker postgresql-broker $BASIC_AUTH_USERNAME $BASIC_AUTH_PASSWORD $APP_URL
 cf enable-service-access postgresql-db
