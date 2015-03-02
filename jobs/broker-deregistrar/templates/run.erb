@@ -15,7 +15,7 @@ cf auth $CF_USERNAME $CF_PASSWORD
 cf purge-service-offering postgresql-db -f
 cf delete-service-broker postgresql-broker -f
 
-cf target -o system -s postgrsql-broker
+cf target -o system -s postgresql-broker
 cf delete postgresql-broker-app -f
 cf delete-space postgresql-broker -f
 
