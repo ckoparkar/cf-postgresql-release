@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -e
+set -u
+
+CF_USERNAME=<%= properties.cf.username %>
+CF_PASSWORD=<%= properties.cf.password %>
+CF_DOMAIN=<%= properties.cf.domain %>
+CF_API="https://api.sys.$CF_DOMAIN"
+
+r=$RANDOM
+APP_NAME="postgresql-smoketest-app-$r"
+
+export PATH=$PATH:/var/vcap/packages/cf_cli_6.10.0/bin
+
+cd /var/vcap/packages/postgresql_smoketest
+
+cf api $CF_API
+cf auth $CF_USERNAME $CF_PASSWORD
+cf create-org smoketest
+cf target -o smoketest
+cf create-space postgresql
+cf target -s postgresql
+cf push $APP_NAME
+
+cf create-service postgresql-db development postgresql-smoketest-service
+cf bind-service $APP_NAME postgresql-smoketest-service
+cf restage $APP_NAME
+
+APP_URL="http://$APP_NAME.apps.$CF_DOMAIN"
+
+return_value=`curl "$APP_URL"`
+
+cf delete $APP_NAME -f
+cf delete-space postgresql -f
+
+if [ $return_value == "ok" ]
+then
+    echo "All smoketests passed."
+	exit 0
+else
+    echo "There were some problems connecting to postgresql."
+	exit 1
+fi

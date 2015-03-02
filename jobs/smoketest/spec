@@ -1,0 +1,19 @@
+---
+name: smoketest
+templates:
+  run.erb: bin/run
+
+packages:
+- ruby_2.1.5
+- cf_cli_6.10.0
+- postgresql_smoketest
+
+properties:
+  cf.username:
+    description: CF username
+    default: admin
+  cf.password:
+    description: CF password
+    default: admin
+  cf.domain:
+    default: example.com

@@ -4,3 +4,6 @@
 [submodule "src/postgresql93/pgextwlist"]
 	path = src/postgresql93/pgextwlist
 	url = https://github.com/dimitri/pgextwlist.git
+[submodule "src/postgresql_smoketest"]
+	path = src/postgresql_smoketest
+	url = https://github.com/cskksc/postgresql-smoketest.git
