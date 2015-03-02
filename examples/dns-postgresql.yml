@@ -34,6 +34,7 @@ networks:
     - 192.168.109.171
     - 192.168.109.172
     - 192.168.109.173
+    - 192.168.109.174
     reserved:
     - 192.168.109.2-192.168.109.170
     - 192.168.109.185-192.168.109.254
@@ -43,7 +44,7 @@ networks:
 resource_pools:
   - name: common
     network: default
-    size: 3
+    size: 4
     stemcell:
       name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
       version: latest
@@ -69,6 +70,16 @@ jobs:
   - name: broker_deregistrar_instance
     release: postgresql-release
     template: broker-deregistrar
+    instances: 1
+    lifecycle: errand
+    resource_pool: common
+    networks:
+      - name: default
+        default: [dns, gateway]
+
+  - name: smoketest_instance
+    release: postgresql-release
+    template: smoketest
     instances: 1
     lifecycle: errand
     resource_pool: common
