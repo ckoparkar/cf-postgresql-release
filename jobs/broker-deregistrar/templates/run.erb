@@ -5,18 +5,25 @@ set -u
 
 CF_USERNAME=<%= properties.cf.username %>
 CF_PASSWORD=<%= properties.cf.password %>
-CF_DOMAIN=<%= properties.cf.domain %>
-CF_API="https://api.sys.$CF_DOMAIN"
+CF_API=<%= properties.cf.api_url %>
+
 export PATH=$PATH:/var/vcap/packages/cf_cli_6.10.0/bin
 
 cf api $CF_API
 cf auth $CF_USERNAME $CF_PASSWORD
 
+cf target -o system -s postgresql-broker
+APPS=(`cf apps | grep postgresql-broker-app`)
+APP_NAME=${APPS[0]}
+
+BROKERS=(`cf service-brokers | grep postgresql-broker`)
+BROKER_NAME=${BROKERS[0]}
+
 cf purge-service-offering postgresql-db -f
-cf delete-service-broker postgresql-broker -f
+cf delete-service-broker $BROKER_NAME -f
 
 cf target -o system -s postgresql-broker
-cf delete postgresql-broker-app -f
+cf delete $APP_NAME -f
 cf delete-space postgresql-broker -f
 
 exit 0
