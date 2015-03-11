@@ -5,8 +5,8 @@ set -u
 
 CF_USERNAME=<%= properties.cf.username %>
 CF_PASSWORD=<%= properties.cf.password %>
-CF_DOMAIN=<%= properties.cf.domain %>
-CF_API="https://api.sys.$CF_DOMAIN"
+CF_API=<%= properties.cf.api_url %>
+CF_APP_DOMAIN=<%= properties.cf.app_domain %>
 
 r=$RANDOM
 APP_NAME="postgresql-smoketest-app-$r"
@@ -27,7 +27,7 @@ cf create-service postgresql-db development postgresql-smoketest-service
 cf bind-service $APP_NAME postgresql-smoketest-service
 cf restage $APP_NAME
 
-APP_URL="http://$APP_NAME.apps.$CF_DOMAIN"
+APP_URL="http://$APP_NAME.$CF_APP_DOMAIN"
 
 return_value=`curl "$APP_URL"`
 

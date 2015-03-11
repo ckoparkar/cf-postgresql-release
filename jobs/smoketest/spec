@@ -15,5 +15,7 @@ properties:
   cf.password:
     description: CF password
     default: admin
-  cf.domain:
-    default: example.com
+  cf.api_url:
+    default: api.sys.example.com
+  cf.app_domain:
+    default: apps.example.com
