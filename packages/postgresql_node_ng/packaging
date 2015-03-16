@@ -1,8 +1,6 @@
 # abort script on any command that exits with a non zero value
 set -e
 
-set -e
-
 cp -a * ${BOSH_INSTALL_TARGET}
 rm ${BOSH_INSTALL_TARGET}/packaging
 
