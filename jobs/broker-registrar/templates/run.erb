@@ -26,10 +26,19 @@ cd /var/vcap/packages/cf_postgresql_broker
 
 cf api $CF_API
 cf auth $CF_USERNAME $CF_PASSWORD
+
 cf create-org system
 cf target -o system
 cf create-space postgresql-broker
 cf target -s postgresql-broker
+
+POSTGRESQL_EXISTS=$(cf marketplace | grep -c postgresql)
+if [ $POSTGRESQL_EXISTS -ne 0 ]
+then
+  echo "Broker already registered."
+  exit 0
+fi
+
 cf push $APP_NAME
 
 cf set-env $APP_NAME POSTGRESQL_HOST $POSTGRESQL_HOST
