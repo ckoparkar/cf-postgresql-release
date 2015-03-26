@@ -8,6 +8,8 @@ CF_PASSWORD=<%= properties.cf.password %>
 CF_API=<%= properties.cf.api_url %>
 CF_APP_DOMAIN=<%= properties.cf.app_domain %>
 
+## This part will push the app to CF.
+
 r=$RANDOM
 APP_NAME="postgresql-smoketest-app-$r"
 
@@ -26,6 +28,9 @@ cf push $APP_NAME
 cf create-service postgresql-db development postgresql-smoketest-service
 cf bind-service $APP_NAME postgresql-smoketest-service
 cf restage $APP_NAME
+
+##
+## App is running in CF with a PostgreSQL service instance bound to it.
 
 APP_URL="http://$APP_NAME.$CF_APP_DOMAIN"
 DATABASE_NAME='test_db'
@@ -47,12 +52,23 @@ check_status() {
   fi
 }
 
+## Verify we can query basic "SELECT 'ok'"
 tests[0]="$APP_URL"
+
+## Create a database 'test_db'
 tests[1]="$APP_URL/create-database/$DATABASE_NAME -X PUT -d ''"
-tests[2]="$APP_URL/create-database/$DATABASE_NAME_2 -X PUT -d ''"
-tests[3]="$APP_URL/create-user/$USER1/for/$DATABASE_NAME -X PUT -d ''"
-tests[4]="$APP_URL/create-user/$USER2/for/$DATABASE_NAME_2 -X PUT -d ''"
-tests[5]="$APP_URL/select-ok/on/$DATABASE_NAME/as/$USER1"
+
+## Create 'user1' and grant all privileges of 'test_db'.
+tests[2]="$APP_URL/create-user/$USER1/for/$DATABASE_NAME -X PUT -d ''"
+
+## Verify 'user1' can access 'test_db'
+tests[3]="$APP_URL/select-ok/on/$DATABASE_NAME/as/$USER1"
+
+## Create 'test_db_2'. Not necessary, but creating user is configured to be given access to some database.
+tests[4]="$APP_URL/create-database/$DATABASE_NAME_2 -X PUT -d ''"
+
+## Create 'user2' with access to 'test_db_2'.
+tests[5]="$APP_URL/create-user/$USER2/for/$DATABASE_NAME_2 -X PUT -d ''"
 
 for i in "${tests[@]}"
 do
@@ -60,7 +76,7 @@ do
 done
 
 
-## Access database as a different user.
+## Access database 'test_db' as 'user2'.
 ## Should raise an error.
 RESPONSE=`curl $APP_URL/select-ok/on/$DATABASE_NAME/as/$USER2`
 if [ "$RESPONSE" == "0" ]
