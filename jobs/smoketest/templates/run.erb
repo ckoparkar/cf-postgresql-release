@@ -28,17 +28,58 @@ cf bind-service $APP_NAME postgresql-smoketest-service
 cf restage $APP_NAME
 
 APP_URL="http://$APP_NAME.$CF_APP_DOMAIN"
+DATABASE_NAME='test_db'
+DATABASE_NAME_2='test_db_2'
+USER1='user1'
+USER2='user2'
 
-return_value=`curl "$APP_URL"`
+check_status() {
+  curl $@
+  local RESPONSE=$?
 
+  if [ "$RESPONSE" == "0" ]
+  then
+    echo "Status: curl $@ : PASSED"
+  else
+    echo "Status: curl $@ : FAILED"
+    kill -s TERM $TOP_PID
+    exit 1
+  fi
+}
+
+tests[0]="$APP_URL"
+tests[1]="$APP_URL/create-database/$DATABASE_NAME -X PUT -d ''"
+tests[2]="$APP_URL/create-database/$DATABASE_NAME_2 -X PUT -d ''"
+tests[3]="$APP_URL/create-user/$USER1/for/$DATABASE_NAME -X PUT -d ''"
+tests[4]="$APP_URL/create-user/$USER2/for/$DATABASE_NAME_2 -X PUT -d ''"
+tests[5]="$APP_URL/select-ok/on/$DATABASE_NAME/as/$USER1"
+
+for i in "${tests[@]}"
+do
+  echo $(check_status $i)
+done
+
+
+## Access database as a different user.
+## Should raise an error.
+RESPONSE=`curl $APP_URL/select-ok/on/$DATABASE_NAME/as/$USER2`
+if [ "$RESPONSE" == "0" ]
+then
+  echo "Smoketests failed."
+  kill -s TERM $TOP_PID
+  exit 1
+else
+  echo "Smoketests passed."
+fi
+
+echo `curl $APP_URL/delete-user/$USER1 -X DELETE`
+echo `curl $APP_URL/delete-user/$USER2 -X DELETE`
+echo `curl $APP_URL/delete-database/$DATABASE_NAME -X DELETE`
+echo `curl $APP_URL/delete-database/$DATABASE_NAME_2 -X DELETE`
+
+cf unbind-service $APP_NAME postgresql-smoketest-service
+cf delete-service postgresql-smoketest-service -f
 cf delete $APP_NAME -f
 cf delete-space postgresql -f
 
-if [ $return_value == "ok" ]
-then
-    echo "All smoketests passed."
-	exit 0
-else
-    echo "There were some problems connecting to postgresql."
-	exit 1
-fi
+exit 0
