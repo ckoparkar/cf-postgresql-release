@@ -101,7 +101,8 @@ properties:
   cf:
     username: admin
     password: admin
-    domain: example.com
+    api_url: api.sys.example.com
+    app_domain: apps.example.com
   postgresql:
     basic_auth:
       username: admin
@@ -113,9 +114,6 @@ properties:
     configuration:
       capacity: 125
       max_clients: 10
-      quota_files: 4
-      quota_data_size: 240
-      enable_journaling: true
       backup:
         enable: false
   nats:
