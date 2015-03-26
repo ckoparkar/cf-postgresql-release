@@ -1,0 +1,294 @@
+---
+name: postgresql
+product_version: 0.0.0.3
+metadata_version: '1.3'
+target_installer_version: 1.0
+stemcell:
+  name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
+  version: '2824'
+  file: bosh-stemcell-2824-vsphere-esxi-ubuntu-trusty-go_agent.tgz
+  md5: e42cf8db9f1a471ed062ff2c6723427a
+releases:
+- name: postgresql-release
+  file: postgresql-release-1.5.6.tgz
+  version: '1.5.6'
+  md5: fb577a419443fe28281725f32e272191
+compiled_package:
+  name: postgresql
+  version: '1.5.6'
+  file: postgresql-release-1.5.6-bosh-vsphere-esxi-ubuntu-trusty-go_agent-2824.tgz
+  md5: bc1418b8703209073c29875670a9cdcb
+requires_product_versions:
+- name: cf
+  version: "~> 1.2"
+provides_product_versions:
+- name: postgresql
+  version: 0.0.0.3
+label: PostgreSQL for Pivotal CF
+description: PostgreSQL database.
+image: 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
+rank: 50
+post_deploy_errands:
+- name: broker-registrar
+- name: smoketest
+pre_delete_errands:
+- name: broker-deregistrar
+job_types:
+- name: postgresql_server
+  release: postgresql-release
+  resource_label: PostgreSQL Server
+  template: postgresql_server
+  resource_definitions:
+  - name: ram
+    type: integer
+    configurable: true
+    default: 1024
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    configurable: true
+    default: 4096
+    constraints:
+      min: 1024
+  - name: persistent_disk
+    type: integer
+    configurable: true
+    default: 1024
+    constraints:
+      min: 1024
+  - name: cpu
+    type: integer
+    configurable: true
+    default: 2
+    constraints:
+      min: 1
+  static_ip: 1
+  dynamic_ip: 0
+  max_in_flight: 100%
+  instance_definitions:
+  - name: instances
+    type: integer
+    default: 1
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    default:
+      identity: vcap
+  - name: server_auth_credentials
+    type: simple_credentials
+    default:
+      identity: vcap
+  manifest: |
+    networks:
+      broker: default
+      static_ips: [(( first_ip ))]
+    postgresql:
+      basic_auth:
+        username: admin
+        password: admin
+      host: (( first_ip ))
+      port: 5435
+      username: (( .postgresql_server.server_auth_credentials.identity ))
+      password: (( .postgresql_server.server_auth_credentials.password ))
+    cf:
+      api_url: (( $runtime.system_api_url ))
+      username: (( ..cf.uaa.admin_credentials.identity ))
+      password: (( ..cf.uaa.admin_credentials.password ))
+- name: broker-registrar
+  resource_label: Broker Registrar
+  template: broker-registrar
+  release: postgresql-release
+  errand: true
+  resource_definitions:
+  - name: ram
+    type: integer
+    configurable: false
+    default: 1024
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    configurable: false
+    default: 2048
+    constraints:
+      min: 1024
+  - name: persistent_disk
+    type: integer
+    configurable: false
+    default: 0
+  - name: cpu
+    type: integer
+    configurable: false
+    default: 1
+    constraints:
+      min: 1
+  static_ip: 0
+  dynamic_ip: 1
+  max_in_flight: 1
+  instance_definitions:
+  - name: instances
+    type: integer
+    default: 1
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    default:
+      identity: vcap
+  manifest: |
+    postgresql:
+      basic_auth:
+        username: admin
+        password: admin
+      host: (( .postgresql_server.first_ip ))
+      port: 5435
+      username: (( .postgresql_server.server_auth_credentials.identity ))
+      password: (( .postgresql_server.server_auth_credentials.password ))
+    cf:
+      api_url: (( $runtime.system_api_url ))
+      app_domain: (( $runtime.apps_domain ))
+      username: (( ..cf.uaa.admin_credentials.identity ))
+      password: (( ..cf.uaa.admin_credentials.password ))
+- name: smoketest
+  resource_label: Smoketest
+  template: smoketest
+  release: postgresql-release
+  errand: true
+  resource_definitions:
+  - name: ram
+    type: integer
+    configurable: false
+    default: 1024
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    configurable: false
+    default: 2048
+    constraints:
+      min: 1024
+  - name: persistent_disk
+    type: integer
+    configurable: false
+    default: 0
+  - name: cpu
+    type: integer
+    configurable: false
+    default: 1
+    constraints:
+      min: 1
+  static_ip: 0
+  dynamic_ip: 1
+  max_in_flight: 1
+  instance_definitions:
+  - name: instances
+    type: integer
+    default: 1
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    default:
+      identity: vcap
+  manifest: |
+    postgresql:
+      basic_auth:
+        username: admin
+        password: admin
+      host: (( .postgresql_server.first_ip ))
+      port: 5435
+      username: (( .postgresql_server.server_auth_credentials.identity ))
+      password: (( .postgresql_server.server_auth_credentials.password ))
+    cf:
+      api_url: (( $runtime.system_api_url ))
+      app_domain: (( $runtime.apps_domain ))
+      username: (( ..cf.uaa.admin_credentials.identity ))
+      password: (( ..cf.uaa.admin_credentials.password ))
+- name: broker-deregistrar
+  resource_label: Broker Deregistrar
+  template: broker-deregistrar
+  release: postgresql-release
+  errand: true
+  resource_definitions:
+  - name: ram
+    type: integer
+    configurable: false
+    default: 1024
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    configurable: false
+    default: 2048
+    constraints:
+      min: 1024
+  - name: persistent_disk
+    type: integer
+    configurable: false
+    default: 0
+  - name: cpu
+    type: integer
+    configurable: false
+    default: 1
+    constraints:
+      min: 1
+  static_ip: 0
+  dynamic_ip: 1
+  max_in_flight: 1
+  instance_definitions:
+  - name: instances
+    type: integer
+    default: 1
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    default:
+      identity: vcap
+  manifest: |
+    postgresql:
+      basic_auth:
+        username: admin
+        password: admin
+      host: (( .postgresql_server.first_ip ))
+      port: 5435
+      username: (( .postgresql_server.server_auth_credentials.identity ))
+      password: (( .postgresql_server.server_auth_credentials.password ))
+    cf:
+      api_url: (( $runtime.system_api_url ))
+      app_domain: (( $runtime.apps_domain ))
+      username: (( ..cf.uaa.admin_credentials.identity ))
+      password: (( ..cf.uaa.admin_credentials.password ))
+- name: compilation
+  resource_label: Compilation
+  resource_definitions:
+  - name: ram
+    type: integer
+    configurable: true
+    default: 1024
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    configurable: true
+    default: 4096
+    constraints:
+      min: 1024
+  - name: persistent_disk
+    type: integer
+    configurable: false
+    default: 0
+  - name: cpu
+    type: integer
+    configurable: true
+    default: 2
+    constraints:
+      min: 1
+  static_ip: 0
+  dynamic_ip: 1
+  max_in_flight: 100%
+  instance_definitions:
+  - name: instances
+    type: integer
+    configurable: true
+    default: 2
+    constraints:
+      min: 1
